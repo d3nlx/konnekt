@@ -1,14 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const firstName = localStorage.getItem('firstName') || '';
-  const lastName = localStorage.getItem('lastName') || '';
-  const number = localStorage.getItem('number') || '';
-  const password = localStorage.getItem('password') || '';
+import {changeNumber} from "./user-page-rest/change-number.js";
+import {changePassword} from "./user-page-rest/change-password.js";
 
-  document.querySelector('.js-user-first-name').textContent = firstName;
-  document.querySelector('.js-user-last-name').textContent = lastName;
-  document.querySelector('.js-user-number').textContent = number;
-  document.querySelector('.js-password').textContent = password;
+document.addEventListener('DOMContentLoaded', () => {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  if (!currentUser) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  document.querySelector('.js-user-first-name').textContent = currentUser.firstName;
+  document.querySelector('.js-user-last-name').textContent = currentUser.lastName;
+  document.querySelector('.js-user-number').textContent = currentUser.number;
+  document.querySelector('.js-password').textContent = currentUser.password;
 });
+
+changeNumber();
+changePassword();
 
 document.querySelector('.js-log-out-button').addEventListener('click', () => {
   window.location.href = 'login.html';

@@ -7,18 +7,25 @@ function registration() {
   const lastName = document.querySelector('.js-last-name').value;
   const number = document.querySelector('.js-number').value;
   const password = document.querySelector('.js-password-input').value;
-
   const registrationError = document.querySelector('.registration-error');
 
   if (firstName === '' || lastName === '' || number === '' || password === '') {
-    registrationError.innerHTML = 'заполни поля даными';
+    registrationError.innerHTML = 'Заполните все поля';
+    return;
+  }
+  
+  let users = JSON.parse(localStorage.getItem('users')) || [];
+  const userExists = users.some(user => user.number === number);
+
+  if (userExists) {
+    registrationError.innerHTML = 'Такой номер уже зарегистрирован';
     return;
   }
 
-  localStorage.setItem('firstName', firstName);
-  localStorage.setItem('lastName', lastName);
-  localStorage.setItem('number', number);
-  localStorage.setItem('password', password);
+  const newUser = { firstName, lastName, number, password };
+  users.push(newUser);
+  localStorage.setItem('users', JSON.stringify(users));
+  localStorage.setItem('currentUser', JSON.stringify(newUser));
 
   document.querySelector('.js-first-name').value = '';
   document.querySelector('.js-last-name').value = '';

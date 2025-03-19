@@ -3,33 +3,32 @@ document.querySelector('.js-log-in-button').addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const firstName = localStorage.getItem('firstName');
+  const number = localStorage.getItem('number');
   const password = localStorage.getItem('password');
 
-  document.querySelector('.js-user-first-name').textContent = firstName;
+  document.querySelector('.js-user-number').textContent = number;
   document.querySelector('.js-password').textContent = password;
 });
 
 function login () {
-  const firstName = localStorage.getItem('firstName');
-  const password = localStorage.getItem('password');
-  
+  const loginNumber = document.querySelector('.js-number-input-login').value
+  const loginPassword = document.querySelector('.js-password-input-login').value
   const loginError = document.querySelector('.login-error');
   
-  const loginName = document.querySelector('.js-first-name-login').value
-  const loginPassword = document.querySelector('.js-password-input-login').value
-
-  if (loginName === '' || loginPassword === '') {
-    loginError.innerHTML = 'заполни поля даными';
+  if (loginNumber === '' || loginPassword === '') {
+    loginError.innerHTML = 'Заполните все поля';
     return;
   }
 
-  if (loginName === firstName && loginPassword === password) {
-      window.location.href = 'user-page.html';
-    } else {
-      loginError.innerHTML = 'ошибка при входе';
-      console.log('ошибка при входе');
-    }
+  let users = JSON.parse(localStorage.getItem('users')) || [];
+  const user = users.find(user => user.number === loginNumber && user.password === loginPassword);
+
+  if (user) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    window.location.href = 'user-page.html';
+  } else {
+    loginError.innerHTML = 'Ошибка входа: неправильный номер или пароль';
+  }
  } 
 
 document.querySelector('.js-sign-up-button').addEventListener('click', () => {
