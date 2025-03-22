@@ -4,6 +4,12 @@ export function changeNumber () {
     const newNumber = document.querySelector('.js-user-change-number-input').value;
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
+    const phonePattern = /^\d{10,11}$/;
+    if (!phonePattern.test(newNumber)) {
+      alert('Номер должен содержать 10-11 цифр!');
+      return;
+    }
+
     if (!newNumber) {
       alert('Поле номера не может быть пустым!');
       return;
