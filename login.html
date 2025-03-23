@@ -1,22 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body>
-    <p>Konnekt</p>
-    <input class="number js-number-input-login" type="text" placeholder="number">
+  <head>
+    <title>konnekt</title>
+    <style>
+      body {
+        background-color: #3C5995;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
 
-    <input class="password js-password-input-login" type="text" placeholder="password">
+      .login-page-css {
+        display: flex; 
+        flex-direction: column;  
+        align-items: center;  
+        justify-content: center;  
+        height: 95vh; /* Центрирование по высоте */
+      }
 
-    <button class="js-log-in-button">Log in</button>
-    <button class="js-sign-up-button">Sign up</button>
+      p {
+        margin: 0;
+        margin-bottom: 20px;
+        font-weight: 700;
+        font-size: 50px;
+        color: #FDFDFD;
+      }
 
-    <p class="js-user-first-name"></p>
-    <p class="js-user-last-name"></p>
-    <p class="js-user-number"></p>
-    <p class="js-password"></p>
+      input {
+        width: 250px;
+        height: 25px;
+        padding-left: 10px;
+        border: none;
+        border-radius: 3px;
+        margin-bottom: 5px;
+        color: #333333;
+      }
 
-    <p class="login-error"></p>
+      .css-log-in-button {
+        width: 262px;
+        height: 22px;
+        border: none;
+        border-radius: 3px;
+        background-color: #2F4576;
+        color: #FDFDFD;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        cursor: pointer;
+      }
 
+      .css-log-in-button:hover {
+        background-color: #233d67;
+      }
+
+      .css-sign-up-button {
+        margin-top: 10px;
+        background-color: #3C5995;
+        color: #CDDBDE;
+        border: none;
+        font-weight: lighter;
+        cursor: pointer;
+      }
+
+      .css-sign-up-button:hover {
+        text-decoration: underline;
+      }
+
+      .css-login-error {
+        color: #FDFDFD;
+        margin-bottom: 3px;
+      }
+    </style>
+  </head>
+  <body style="margin: 0;">
+    <div class="login-page-css">
+      <p>konnekt</p>
+      <input class="number js-number-input-login" type="text" placeholder="number">
+
+      <input class="password js-password-input-login" type="text" placeholder="password">
+
+      <div class="css-login-error login-error"></div>
+
+      <button class="css-log-in-button js-log-in-button">Log in</button>
+      <button class="css-sign-up-button js-sign-up-button">sign up for konnekt</button>
+
+      <p class="js-user-first-name"></p>
+      <p class="js-user-last-name"></p>
+      <p class="js-user-number"></p>
+      <p class="js-password"></p>
+    </div>
     <script type="module" src="scripts/login.js"></script>
   </body>
 </html>

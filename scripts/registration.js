@@ -9,14 +9,14 @@ function registration() {
   const password = document.querySelector('.js-password-input').value;
   const registrationError = document.querySelector('.registration-error');
 
-  const phonePattern = /^\d{10,11}$/;
-  if (!phonePattern.test(number)) {
-    registrationError.innerHTML = 'Номер должен содержать 10-11 цифр!';
+  if (firstName === '' || lastName === '' || number === '' || password === '') {
+    registrationError.innerHTML = 'Заполните все поля';
     return;
   }
 
-  if (firstName === '' || lastName === '' || number === '' || password === '') {
-    registrationError.innerHTML = 'Заполните все поля';
+  const phonePattern = /^\d{10,11}$/;
+  if (!phonePattern.test(number)) {
+    registrationError.innerHTML = 'Номер должен содержать 10-11 цифр!';
     return;
   }
   
