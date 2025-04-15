@@ -1,5 +1,7 @@
 import {changeNumber} from "./user-page-rest/change-number.js";
 import {changePassword} from "./user-page-rest/change-password.js";
+import {changeName} from "./user-page-rest/change-name.js"
+import {changeLastName} from "./user-page-rest/change-last-name.js"
 
 document.addEventListener('DOMContentLoaded', () => {
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -16,7 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 changeNumber();
 changePassword();
+changeName();
+changeLastName();
 
 document.querySelector('.js-log-out-button').addEventListener('click', () => {
   window.location.href = 'login.html';
 });
+
+document.querySelector('.js-open-chats-button').addEventListener('click', () => {
+  window.location.href = 'chats.html';
+})
